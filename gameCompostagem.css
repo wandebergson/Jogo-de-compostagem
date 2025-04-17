@@ -1,0 +1,99 @@
+ body {
+     display: flex;
+     justify-content: center;
+     align-items: center;
+     height: 100vh;
+     background-color: #87CEEB;
+     margin: 0;
+ }
+  /* GRAMADO*/
+  .contador {
+    position: absolute;
+    bottom: 5px;
+    right: 5px;
+    color: white;
+    font-size: 16px;
+    font-weight: bold;
+  }
+  
+  .gramado {
+    background-color: #32CD32;
+  }
+
+  
+ .game-board {
+     display: grid;
+     grid-template-columns: repeat(5, 100px);
+     grid-template-rows: repeat(6, 100px);
+     gap: 2px;
+     background-color: #228B22;
+     padding: 10px;
+    height: 95%;    
+}
+ /*BLOQUINHO GRAMADO*/
+ .cell {
+     width: 100px;
+     height: 100px;
+     background-color: #32CD32;
+     display: flex;
+     justify-content: center;
+     align-items: center;
+ }
+ .hole {
+    background-color: black;
+    border-radius: 50%;
+    box-shadow: inset 0 5px 10px rgba(255, 255, 255, 0.1),
+                inset 0 -5px 10px rgba(0, 0, 0, 0.5);
+}
+
+
+  /* Estilizando o container da esteira */
+  .conveyor-container {
+    width: 509px;
+    height: 80px;
+    overflow: hidden;
+    background-color: #333;
+    position: relative;
+    margin-top: 20px;
+  }
+  
+  .conveyor-belt {
+    width: 509; /* <- espaço grande pra os itens se moverem */
+    height: 100%;
+    position: absolute;
+  }
+  
+  
+  .item {
+    width: 50px;
+    height: 50px;
+    margin-right: 10px;
+    font-size: 30px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: absolute;
+    top: 15px;
+    z-index: 1;
+    cursor: grab;
+  }
+  
+
+/* Criando os itens da esteira */
+ 
+/* Animação da esteira */
+@keyframes moveBelt {
+    from {
+        transform: translateX(-100%);
+    }
+    to {
+        transform: translateX(100%);
+    }
+}
+ 
+/* item esteira*/
+.item.dragging {
+    opacity: 0.5;
+    cursor: grabbing;
+  }
+  

@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Game Compostagem</title>
+    <link href="gameCompostagem.css" rel="stylesheet">
+    <script src="gameCompostagem.js"></script>
+</head>
+
+<body ondragover="event.preventDefault()" ondrop="soltarItem(event)">
+
+   
+    
+   
+
+     <div class="game-board">
+      <!-- Em cada .cell -->
+        <div  onclick="CriarBuraco(event)" class="cell hole" id="cell-1" data-contador="0"><span id="contador-cell-1" class="contador">0</span></div>        
+        <div  onclick="CriarBuraco(event)" class="cell hole" id="cell-2" data-contador="0"><span id="contador-cell-2" class="contador">0</span></div>
+        <div  onclick="CriarBuraco(event)" class="cell hole" id="cell-3" data-contador="0"><span id="contador-cell-3" class="contador">0</span></div>        
+        <div  onclick="CriarBuraco(event)" class="cell hole" id="cell-4" data-contador="0"><span id="contador-cell-4" class="contador">0</span></div>
+        <div  onclick="CriarBuraco(event)" class="cell hole" id="cell-5" data-contador="0"><span id="contador-cell-5" class="contador">0</span></div>        
+        <div  onclick="CriarBuraco(event)" class="cell hole" id="cell-6" data-contador="0"><span id="contador-cell-6" class="contador">0</span></div>
+        <div  onclick="CriarBuraco(event)" class="cell hole" id="cell-7" data-contador="0"><span id="contador-cell-7" class="contador">0</span></div>        
+        <div  onclick="CriarBuraco(event)" class="cell hole" id="cell-8" data-contador="0"><span id="contador-cell-8" class="contador">0</span></div>
+        <div  onclick="CriarBuraco(event)" class="cell hole" id="cell-9" data-contador="0"><span id="contador-cell-9" class="contador">0</span></div>        
+        <div  onclick="CriarBuraco(event)" class="cell hole" id="cell-10" data-contador="0"><span id="contador-cell-10" class="contador">0</span></div>
+        <div  onclick="CriarBuraco(event)" class="cell hole" id="cell-11" data-contador="0"><span id="contador-cell-11" class="contador">0</span></div>        
+        <div  onclick="CriarBuraco(event)" class="cell hole" id="cell-12" data-contador="0"><span id="contador-cell-12" class="contador">0</span></div>
+        <div  onclick="CriarBuraco(event)" class="cell hole" id="cell-13" data-contador="0"><span id="contador-cell-13" class="contador">0</span></div>        
+        <div  onclick="CriarBuraco(event)" class="cell hole" id="cell-14" data-contador="0"><span id="contador-cell-14" class="contador">0</span></div>
+        <div  onclick="CriarBuraco(event)" class="cell hole" id="cell-15" data-contador="0"><span id="contador-cell-15" class="contador">0</span></div>        
+        <div  onclick="CriarBuraco(event)" class="cell hole" id="cell-16" data-contador="0"><span id="contador-cell-16" class="contador">0</span></div>
+        <div  onclick="CriarBuraco(event)" class="cell hole" id="cell-17" data-contador="0"><span id="contador-cell-17" class="contador">0</span></div>        
+        <div  onclick="CriarBuraco(event)" class="cell hole" id="cell-18" data-contador="0"><span id="contador-cell-18" class="contador">0</span></div>
+        <div  onclick="CriarBuraco(event)" class="cell hole" id="cell-19" data-contador="0"><span id="contador-cell-19" class="contador">0</span></div>        
+        <div  onclick="CriarBuraco(event)" class="cell hole" id="cell-20" data-contador="0"><span id="contador-cell-20" class="contador">0</span></div>
+        <div  onclick="CriarBuraco(event)" class="cell hole" id="cell-21" data-contador="0"><span id="contador-cell-21" class="contador">0</span></div>        
+        <div  onclick="CriarBuraco(event)" class="cell hole" id="cell-22" data-contador="0"><span id="contador-cell-22" class="contador">0</span></div>
+        <div  onclick="CriarBuraco(event)" class="cell hole" id="cell-23" data-contador="0"><span id="contador-cell-23" class="contador">0</span></div>        
+        <div  onclick="CriarBuraco(event)" class="cell hole" id="cell-24" data-contador="0"><span id="contador-cell-24" class="contador">0</span></div>
+        <div  onclick="CriarBuraco(event)" class="cell hole" id="cell-25" data-contador="0"><span id="contador-cell-25" class="contador">0</span></div>        
+
+       <!-- esteira -->
+       <div class="conveyor-container">
+        <div class="conveyor-belt" id="esteira"></div>
+      </div>
+      
+      <script src="objetos.js"></script>
+      <script>
+        const esteira = new Esteira("esteira");
+        esteira.iniciarEsteira(); // começa a adicionar itens aleatórios
+      </script>
+      
+   
+    
+
+</body>
+
+</html>
