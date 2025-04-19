@@ -10,19 +10,26 @@ function CriarBuraco(event) {
   }
 }
 */
+
+
 function soltarItem(event) {
   const alvo = event.target;
+
   if (alvo.classList.contains("hole")) {
     const contador = parseInt(alvo.dataset.contador) || 0;
     const novoValor = contador + 1;
     alvo.dataset.contador = novoValor;
+
+    // Atualiza visual
     atualizarContadorVisual(alvo);
 
     // Se chegou a 5, vira gramado
     if (novoValor >= 5) {
       alvo.classList.remove("hole");
-      alvo.classList.add("gramado");
-      this.alvo(pressionable=false);
+      alvo.classList.add("cell");
+
+      // Verifica vitória após transformação
+      verificarVitoria();
     }
 
     // Remove o item da tela
@@ -33,11 +40,20 @@ function soltarItem(event) {
   }
 }
 
+function verificarVitoria() {
+  const buracosRestantes = document.querySelectorAll(".hole");
+  if (buracosRestantes.length === 0) {
+    alert("Parabéns! Você restaurou toda a terra!");
+    Esteira.ativo = false; // para a esteira se quiser
+  }
+}
+
+
 function atualizarContadorVisual(cell) {
   const id = cell.id;
   let contadorSpan = document.getElementById(`contador-${id}`);
   if (!contadorSpan) {
-    contadorSpan = document.createElement("span");
+     
     contadorSpan.id = `contador-${id}`;
     contadorSpan.className = "contador";
     cell.appendChild(contadorSpan);
@@ -94,7 +110,7 @@ class RestosDeComida extends ItemOrganico { constructor()
   { super("🥗"); } 
 }
 
-class Esteira {
+class Esteira  {
   constructor(containerId) {
     this.container = document.getElementById(containerId);
     this.tipos = [Organicos, CascaDeBanana, BorraDeCafe, ChasVelhos, FolhasVelhas, RestosDeComida];
@@ -125,16 +141,17 @@ class Esteira {
       if (!this.ativo) return;
 
       if (posicao + larguraItem >= esteiraLargura) {
-        // 🔴 Remover item e diminuir vida
+        // Remover item e diminuir vida
         this.container.removeChild(elemento);
         this.itens = this.itens.filter(item => item !== elemento);
 
-        this.vidas--; // ❗ Perdeu uma vida
+        this.vidas--; // Perdeu uma vida
         console.log(`Vidas restantes: ${this.vidas}`);
 
-        if (this.vidas <= 0) {
+        if (this.vidas <= 0 ) {
           this.fimDeJogo();
         }
+        
 
         return;
       }
@@ -156,9 +173,27 @@ class Esteira {
     };
     loop();
   }
+  verificarVitoria() {
+    const buracosRestantes = document.querySelector('.con');
+    if (buracosRestantes.length === 24) {
+      this.ativo = false; // para a esteira
+      this.fimDeJogoBom(); // chama fim de jogo bom
+    }
+  }
 
+  fimDeJogoBom() {
+     
+     
+     
+    alert("Fim de Jogo! vc salvou o mundo.");
+     
+  }
   fimDeJogo() {
+     
+     
     this.ativo = false;
     alert("Fim de Jogo! vc condenou o mundo.");
+     
   }
 }
+ 
