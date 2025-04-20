@@ -1,17 +1,4 @@
-/*
-função obsoleta, mas vou deixar aqui pra caso eu precise 
-vai saber né? kkkk
-function CriarBuraco(event) {
- const cell = event.target;
-  if (!cell.classList.contains("hole") && !cell.classList.contains("gramado")) {
-    cell.classList.add("hole");
-    cell.dataset.contador = "0";
-    atualizarContadorVisual(cell);
-  }
-}
-*/
-
-
+ 
 function soltarItem(event) {
   const alvo = event.target;
 
@@ -29,13 +16,16 @@ function soltarItem(event) {
       alvo.classList.add("cell");
 
       // Verifica vitória após transformação
-      verificarVitoria();
+      
+      
     }
 
     // Remove o item da tela
     const draggingItem = document.querySelector(".item.dragging");
     if (draggingItem) {
       draggingItem.remove();
+       
+      verificarVitoria();
     }
   }
 }
@@ -43,8 +33,8 @@ function soltarItem(event) {
 function verificarVitoria() {
   const buracosRestantes = document.querySelectorAll(".hole");
   if (buracosRestantes.length === 0) {
-    alert("Parabéns! Você restaurou toda a terra!");
-    Esteira.ativo = false; // para a esteira se quiser
+    alert( 'fim de jogo, vc restaurou toda a terra !')
+Esteira.ativo = false; // para a esteira se quiser
   }
 }
 
@@ -141,11 +131,11 @@ class Esteira  {
       if (!this.ativo) return;
 
       if (posicao + larguraItem >= esteiraLargura) {
-        // Remover item e diminuir vida
+        // 🔴 Remover item e diminuir vida
         this.container.removeChild(elemento);
         this.itens = this.itens.filter(item => item !== elemento);
 
-        this.vidas--; // Perdeu uma vida
+        this.vidas--; // ❗ Perdeu uma vida
         console.log(`Vidas restantes: ${this.vidas}`);
 
         if (this.vidas <= 0 ) {
@@ -173,21 +163,9 @@ class Esteira  {
     };
     loop();
   }
-  verificarVitoria() {
-    const buracosRestantes = document.querySelector('.con');
-    if (buracosRestantes.length === 24) {
-      this.ativo = false; // para a esteira
-      this.fimDeJogoBom(); // chama fim de jogo bom
-    }
-  }
+ 
 
-  fimDeJogoBom() {
-     
-     
-     
-    alert("Fim de Jogo! vc salvou o mundo.");
-     
-  }
+ 
   fimDeJogo() {
      
      
