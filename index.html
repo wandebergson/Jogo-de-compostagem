@@ -13,7 +13,11 @@
 
    
     
-   
+  <div id="painel" class="painel-info">
+    <div class="vidas-info">❤️ Vidas: <span id="painel-vidas"></span></div>
+    <div class="pontos-info">🌱 Pontos: <span id="painel-pontos"></span></div>
+  </div>
+  
 
      <div class="game-board">
       <!-- Em cada .cell -->
@@ -54,7 +58,7 @@
  
 
 
-      <script src="objetos.js"></script>
+      
       <script>
         const esteira = new Esteira("esteira");
         esteira.iniciarEsteira(); // começa a adicionar itens aleatórios

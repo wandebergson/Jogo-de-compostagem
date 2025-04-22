@@ -12,6 +12,31 @@
  .contador{
   visibility: hidden;
  }
+ /*contador de vidas e pontos */
+ .painel-info {
+  position: absolute;
+  top: 20px;
+  right: 20px;
+  background: rgba(255, 255, 255, 0.85);
+  border-radius: 12px;
+  padding: 15px 20px;
+  font-size: 18px;
+  font-weight: bold;
+  color: #333;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+  z-index: 999;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.painel-info .vidas-info,
+.painel-info .pontos-info {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
   
   /* GAME BOARD */
   .game-board {
@@ -26,6 +51,56 @@
     box-shadow: 0 0 15px rgba(0, 0, 0, 0.3);
   }
   
+/*teste de grama*/ 
+
+.grass {
+  width: 100px;
+  height: 100px;
+  border-radius: 50% / 30%;
+  background: radial-gradient(ellipse at center,
+              #3cc63c 0%,    /* topo mais claro */
+              #2ca02c 50%,   /* meio verde médio */
+              #1a5c1a 100%); /* base mais escura */
+  box-shadow:
+    /*inset 0 -4px 6px rgba(0, 0, 0, 0.0),    sombra no fundo */
+    0 3px 5px rgba(0, 0, 0, 0.0);        /* sombra externa pra dar elevação */
+  transform: rotateX(50deg) scale(0);     /* perspectiva inclinada */
+  animation: growGrass 1s ease-out forwards;
+  position: relative;
+  transition: transform 0.5s ease;
+}
+.grass::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  border-radius: 50% / 30%;
+  box-shadow: inset 0 3px 4px rgba(255, 255, 255, 0.15);
+  pointer-events: none;
+}
+
+
+  /*animação grama*/ 
+  @keyframes growGrass {
+    0% {
+      transform: rotateX(50deg) scale(0);
+      opacity: 0;
+    }
+    60% {
+      transform: rotateX(50deg) scale(1.1);
+      opacity: 1;
+    }
+    100% {
+      transform: rotateX(50deg) scale(1);
+    }
+  }
+  
+  
+
+  
+
   /* CELULAS GRAMADO */
   .cell {
     width: 100px;

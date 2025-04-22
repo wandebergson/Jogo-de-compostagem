@@ -13,9 +13,9 @@ function soltarItem(event) {
     // Se chegou a 5, vira gramado
     if (novoValor >= 5) {
       alvo.classList.remove("hole");
-      alvo.classList.add("cell");
+      alvo.classList.add("grass");
 
-      // Verifica vitória após transformação
+    
       
       
     }
@@ -24,7 +24,8 @@ function soltarItem(event) {
     const draggingItem = document.querySelector(".item.dragging");
     if (draggingItem) {
       draggingItem.remove();
-       
+      atualizarPainel();
+      atualizarPainelPontos();
       verificarVitoria();
     }
   }
@@ -49,6 +50,16 @@ function atualizarContadorVisual(cell) {
     cell.appendChild(contadorSpan);
   }
   contadorSpan.textContent = cell.dataset.contador;
+}
+   
+function atualizarPainel() {
+  const pontosSpan = document.getElementById("painel-pontos");
+  
+
+  // Pontos = buracos que viraram grama (data-contador >= 5)
+  const gramas = document.querySelectorAll(".grass");
+  pontosSpan.textContent = gramas.length
+ 
 }
 
 class ItemOrganico {
@@ -121,12 +132,19 @@ class Esteira  {
     this.itens.push(objeto.element);
     this.animarObjeto(objeto.element);
   }
+   
 
+    
+   
   animarObjeto(elemento) {
     let posicao = 0;
     const esteiraLargura = 509;
     const larguraItem = 50;
-
+    
+    const vidasSpan = document.getElementById("painel-vidas");
+   
+    vidasSpan.textContent = this.vidas ;
+  
     const mover = () => {
       if (!this.ativo) return;
 
@@ -134,12 +152,14 @@ class Esteira  {
         // 🔴 Remover item e diminuir vida
         this.container.removeChild(elemento);
         this.itens = this.itens.filter(item => item !== elemento);
-
+        
         this.vidas--; // ❗ Perdeu uma vida
         console.log(`Vidas restantes: ${this.vidas}`);
-
+        
         if (this.vidas <= 0 ) {
           this.fimDeJogo();
+          
+          
         }
         
 
@@ -167,10 +187,11 @@ class Esteira  {
 
  
   fimDeJogo() {
-     
-     
+   
+    
     this.ativo = false;
     alert("Fim de Jogo! vc condenou o mundo.");
+    
      
   }
 }
